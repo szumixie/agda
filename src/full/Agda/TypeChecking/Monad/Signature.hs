@@ -613,7 +613,7 @@ applySection' new ptel old ts ScopeCopyInfo{ renNames = rd, renModules = rm } = 
             proj :: Either ProjectionLikenessMissing Projection
             proj   = case oldDef of
               Function{funProjection = Right p@Projection{projIndex = n}}
-                | size ts' < n || (size ts' == n && maybe True isVar0 (lastMaybe ts'))
+                | size ts' < n
                 -> Right p { projIndex = n - size ts'
                            , projLams  = projLams p `apply` ts'
                            , projProper= copyName <$> projProper p
